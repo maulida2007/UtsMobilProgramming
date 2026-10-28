@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../task2/data_dummy.dart';
 
 // TASK 1 - Implementasi UI Onboarding "All your favorites"
@@ -8,12 +7,12 @@ class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
   static const String _illustrationUrl =
-      'https://images.unsplash.com/photo-1504674900247-0877df9cc836'
-      '?auto=format&fit=crop&w=600&q=80';
+      'https://fulminoussoftware.com/assets-front/img/1stOrder/1stOrder-2.webp';
 
   void _goToOrders(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (_) => const OrderListPage()));
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const OrderListPage()),
+    );
   }
 
   @override
@@ -60,12 +59,11 @@ class OnboardingPage extends StatelessWidget {
                               fit: BoxFit.cover,
                               loadingBuilder: (context, child, progress) =>
                                   progress == null
-                                  ? child
-                                  : const Center(
-                                      child: CircularProgressIndicator(
-                                        color: Colors.deepOrange,
-                                      ),
-                                    ),
+                                      ? child
+                                      : const Center(
+                                          child: CircularProgressIndicator(
+                                              color: Colors.deepOrange),
+                                         ),
                               errorBuilder: (_, _, _) => const Icon(
                                 Icons.fastfood,
                                 size: 100,
@@ -80,6 +78,54 @@ class OnboardingPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
 
+                // Judul
+                Text(
+                  'All your favorites',
+                  style: GoogleFonts.poppins(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueGrey[900],
+                  ),
+                ),
+                const SizedBox(height: 12),
 
+                // Deskripsi
+                Text(
+                  'Get all your loved foods in one once place, '
+                  'you just place the one we do the rest',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.normal,
+                    height: 1.5,
+                    color: Colors.blueGrey[400],
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Indikator halaman
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(4, (i) {
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      width: 10,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: i == 0
+                            ? Colors.deepOrange
+                            : Colors.deepOrange.shade100,
+                      ),
+                    );
+                  }),
+                ),
+                const SizedBox(height: 40),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
