@@ -63,7 +63,7 @@ class OnboardingPage extends StatelessWidget {
                                       : const Center(
                                           child: CircularProgressIndicator(
                                               color: Colors.deepOrange),
-                                         ),
+                                        ),
                               errorBuilder: (_, _, _) => const Icon(
                                 Icons.fastfood,
                                 size: 100,
@@ -121,6 +121,46 @@ class OnboardingPage extends StatelessWidget {
                   }),
                 ),
                 const SizedBox(height: 40),
+
+                // Tombol NEXT
+                SizedBox(
+                  width: double.infinity,
+                  height: 56,
+                  child: ElevatedButton(
+                    onPressed: () => _goToOrders(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepOrange,
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: Text(
+                      'NEXT',
+                      style: GoogleFonts.poppins(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+
+                // Tautan Skip
+                TextButton(
+                  onPressed: () => _goToOrders(context),
+                  child: Text(
+                    'Skip',
+                    style: GoogleFonts.poppins(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.blueGrey[400],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
