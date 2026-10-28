@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'task1/implementasi.dart';
-import 'task2/data_dummy.dart';
+//import 'task2/data_dummy.dart';
 
 void main() => runApp(const FoodApp());
 

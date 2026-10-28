@@ -5,12 +5,13 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_application/main.dart';
 
 void main() {
-  testWidgets('onboarding navigates to the order list', (
+  testWidgets('onboarding opens dummy orders and updates their status', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(const FoodApp());
@@ -20,7 +21,13 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 400));
 
-    expect(find.text('Your orders'), findsOneWidget);
-    expect(find.text('No orders yet'), findsOneWidget);
+    expect(find.text('My Orders'), findsOneWidget);
+    expect(find.text('Chicken Thai Biriyani'), findsOneWidget);
+    expect(find.widgetWithText(OutlinedButton, 'Cancel'), findsNWidgets(4));
+
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Done').first);
+    await tester.pump();
+
+    expect(find.widgetWithText(OutlinedButton, 'Cancel'), findsNWidgets(3));
   });
 }
